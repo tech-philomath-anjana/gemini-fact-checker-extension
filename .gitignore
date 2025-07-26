@@ -1,2 +1,3 @@
 # Ignore sensitive env files
 server/.env
+node_modules/
