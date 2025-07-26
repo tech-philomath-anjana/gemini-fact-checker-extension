@@ -14,7 +14,7 @@ app.post("/gemini-check", async (req, res) => {
 
   try {
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-pro:generateContent?key=${GEMINI_API_KEY}`,
       {
         contents: [{
           parts: [{
@@ -28,6 +28,7 @@ app.post("/gemini-check", async (req, res) => {
     res.json({ reply });
   } catch (err) {
     console.error(err.message);
+    console.error("Gemini error:", err.response?.data || err.message);
     res.status(500).json({ reply: "Gemini API error." });
   }
 });
